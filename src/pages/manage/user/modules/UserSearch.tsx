@@ -1,6 +1,6 @@
 import { Button, Col, Flex, Form, Input, Row, Select } from 'antd';
 
-import { enableStatusOptions, userGenderOptions } from '@/constants/business';
+import { enableStatusOptions } from '@/constants/business';
 import { translateOptions } from '@/utils/common';
 
 const UserSearch: FC<Page.SearchProps> = memo(({ form, reset, search }) => {
@@ -42,58 +42,10 @@ const UserSearch: FC<Page.SearchProps> = memo(({ form, reset, search }) => {
         >
           <Form.Item
             className="m-0"
-            label={t('page.manage.user.userGender')}
-            name="userGender"
-          >
-            <Select
-              allowClear
-              options={translateOptions(userGenderOptions)}
-              placeholder={t('page.manage.user.form.userGender')}
-            />
-          </Form.Item>
-        </Col>
-
-        <Col
-          lg={6}
-          md={12}
-          span={24}
-        >
-          <Form.Item
-            className="m-0"
             label={t('page.manage.user.nickName')}
             name="nickName"
           >
             <Input placeholder={t('page.manage.user.form.nickName')} />
-          </Form.Item>
-        </Col>
-
-        <Col
-          lg={6}
-          md={12}
-          span={24}
-        >
-          <Form.Item
-            className="m-0"
-            label={t('page.manage.user.userPhone')}
-            name="userPhone"
-            rules={[phone]}
-          >
-            <Input placeholder={t('page.manage.user.form.userPhone')} />
-          </Form.Item>
-        </Col>
-
-        <Col
-          lg={6}
-          md={12}
-          span={24}
-        >
-          <Form.Item
-            className="m-0"
-            label={t('page.manage.user.userEmail')}
-            name="userEmail"
-            rules={[email]}
-          >
-            <Input placeholder={t('page.manage.user.form.userEmail')} />
           </Form.Item>
         </Col>
 
@@ -116,7 +68,8 @@ const UserSearch: FC<Page.SearchProps> = memo(({ form, reset, search }) => {
         </Col>
 
         <Col
-          lg={12}
+          lg={6}
+          md={12}
           span={24}
         >
           <Form.Item className="m-0">

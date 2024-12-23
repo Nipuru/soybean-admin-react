@@ -254,7 +254,7 @@ export function Component() {
         bordered={false}
         className="flex-col-stretch sm:flex-1-hidden card-wrapper"
         ref={tableWrapperRef}
-        title={t('page.manage.role.title')}
+        title={t('page.manage.menu.title')}
         extra={
           <TableHeaderOperation
             add={onAdd}

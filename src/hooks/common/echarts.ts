@@ -29,8 +29,7 @@ import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
-import { ThemeContext } from '@/features';
-import { getThemeSettings } from '@/store/slice/theme';
+import { getDarkMode, getThemeSettings } from '@/store/slice/theme';
 
 export type ECOption = echarts.ComposeOption<
   | BarSeriesOption
@@ -81,7 +80,7 @@ interface ChartHooks {
  * @param darkMode dark mode
  */
 export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: ChartHooks = {}) {
-  const { darkMode } = useContext(ThemeContext);
+  const darkMode = useAppSelector(getDarkMode);
 
   const themeSettings = useAppSelector(getThemeSettings);
 

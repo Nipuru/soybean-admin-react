@@ -95,6 +95,8 @@ declare namespace App {
       };
       /** Theme color */
       themeColor: string;
+      /** Theme scheme */
+      themeScheme: UnionKey.ThemeScheme;
       /** define some theme settings tokens, will transform to css variables */
       tokens: {
         dark?: {
@@ -358,19 +360,6 @@ declare namespace App {
           unpin: string;
         };
         page: {
-          about: {
-            devDep: string;
-            introduction: string;
-            prdDep: string;
-            projectInfo: {
-              githubLink: string;
-              latestBuildTime: string;
-              previewLink: string;
-              title: string;
-              version: string;
-            };
-            title: string;
-          };
           function: {
             multiTab: {
               backTab: string;
@@ -382,26 +371,6 @@ declare namespace App {
               repeatedErrorMsg2: string;
               repeatedErrorOccurOnce: string;
             };
-            tab: {
-              tabOperate: {
-                addMultiTab: string;
-                addMultiTabDesc1: string;
-                addMultiTabDesc2: string;
-                addTab: string;
-                addTabDesc: string;
-                closeAboutTab: string;
-                closeCurrentTab: string;
-                closeTab: string;
-                title: string;
-              };
-              tabTitle: {
-                change: string;
-                changeTitle: string;
-                reset: string;
-                resetTitle: string;
-                title: string;
-              };
-            };
             toggleAuth: {
               adminOrUserVisible: string;
               adminVisible: string;
@@ -410,56 +379,16 @@ declare namespace App {
               toggleAccount: string;
             };
           };
-          home: {
-            creativity: string;
-            dealCount: string;
-            downloadCount: string;
-            entertainment: string;
-            greeting: string;
-            message: string;
-            projectCount: string;
-            projectNews: {
-              desc1: string;
-              desc2: string;
-              desc3: string;
-              desc4: string;
-              desc5: string;
-              moreNews: string;
-              title: string;
-            };
-            registerCount: string;
-            rest: string;
-            schedule: string;
-            study: string;
-            todo: string;
-            turnover: string;
-            visitCount: string;
-            weatherDesc: string;
-            work: string;
-          };
           login: {
-            bindWeChat: {
-              title: string;
-            };
-            codeLogin: {
-              getCode: string;
-              imageCodePlaceholder: string;
-              reGetCode: string;
-              sendCodeSuccess: string;
-              title: string;
-            };
             common: {
               back: string;
               codeLogin: string;
               codePlaceholder: string;
               confirm: string;
               confirmPasswordPlaceholder: string;
-              loginOrRegister: string;
+              login: string;
               loginSuccess: string;
               passwordPlaceholder: string;
-              phonePlaceholder: string;
-              userNamePlaceholder: string;
-              validateSuccess: string;
               welcomeBack: string;
             };
             pwdLogin: {
@@ -472,12 +401,6 @@ declare namespace App {
               superAdmin: string;
               title: string;
               user: string;
-            };
-            register: {
-              agreement: string;
-              policy: string;
-              protocol: string;
-              title: string;
             };
             resetPwd: {
               title: string;
@@ -582,29 +505,15 @@ declare namespace App {
               editUser: string;
               form: {
                 nickName: string;
-                userEmail: string;
-                userGender: string;
                 userName: string;
-                userPhone: string;
                 userRole: string;
                 userStatus: string;
               };
-              gender: {
-                female: string;
-                male: string;
-              };
               nickName: string;
               title: string;
-              userEmail: string;
-              userGender: string;
               userName: string;
-              userPhone: string;
               userRole: string;
               userStatus: string;
-            };
-            userDetail: {
-              content: string;
-              explain: string;
             };
           };
         };
@@ -678,7 +587,7 @@ declare namespace App {
             title: string;
           } & Theme.ThemeColor;
           themeDrawerTitle: string;
-          themeSchema: { title: string };
+          themeSchema: { title: string } & Record<UnionKey.ThemeScheme, string>;
           watermark: {
             text: string;
             visible: string;
@@ -712,30 +621,6 @@ declare namespace App {
 
   /** Service namespace */
   namespace Service {
-    /** Other baseURL key */
-    type OtherBaseURLKey = 'demo';
-
-    interface ServiceConfigItem {
-      /** The backend service base url */
-      baseURL: string;
-      /** The proxy pattern of the backend service base url */
-      proxyPattern: string;
-    }
-
-    interface OtherServiceConfigItem extends ServiceConfigItem {
-      key: OtherBaseURLKey;
-    }
-
-    /** The backend service config */
-    interface ServiceConfig extends ServiceConfigItem {
-      /** Other backend service config */
-      other: OtherServiceConfigItem[];
-    }
-
-    interface SimpleServiceConfig extends Pick<ServiceConfigItem, 'baseURL'> {
-      other: Record<OtherBaseURLKey, string>;
-    }
-
     /** The backend service response data */
     type Response<T = unknown> = {
       /** The backend service response code */

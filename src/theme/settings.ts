@@ -49,6 +49,7 @@ export const themeSettings: App.Theme.ThemeSetting = {
     visible: true
   },
   themeColor: '#646cff',
+  themeScheme: 'light',
   tokens: {
     dark: {
       colors: {
@@ -71,18 +72,6 @@ export const themeSettings: App.Theme.ThemeSetting = {
       }
     }
   },
-  watermark: {
-    text: 'SoybeanAdmin',
-    visible: false
-  }
-};
-
-/**
- * Override theme settings
- *
- * If publish new version, use `overrideThemeSettings` to override certain theme settings
- */
-export const overrideThemeSettings: Partial<App.Theme.ThemeSetting> = {
   watermark: {
     text: 'SoybeanAdmin',
     visible: false

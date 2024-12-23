@@ -1,17 +1,4 @@
 const page: App.I18n.Schema['translation']['page'] = {
-  about: {
-    devDep: '开发依赖',
-    introduction: `SoybeanAdmin 是一个优雅且功能强大的后台管理模板，基于最新的前端技术栈，包括 React18.3, Vite5, TypeScript,ReactRouter6.4,Redux/toolkit 和 UnoCSS。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。此外，它还采用了基于 ApiFox 的在线Mock数据方案。SoybeanAdmin 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。`,
-    prdDep: '生产依赖',
-    projectInfo: {
-      githubLink: 'Github 地址',
-      latestBuildTime: '最新构建时间',
-      previewLink: '预览地址',
-      title: '项目信息',
-      version: '版本'
-    },
-    title: '关于'
-  },
   function: {
     multiTab: {
       backTab: '返回 function_tab',
@@ -23,26 +10,6 @@ const page: App.I18n.Schema['translation']['page'] = {
       repeatedErrorMsg2: '自定义请求错误 2',
       repeatedErrorOccurOnce: '重复请求错误只出现一次'
     },
-    tab: {
-      tabOperate: {
-        addMultiTab: '添加多标签页',
-        addMultiTabDesc1: '跳转到多标签页页面',
-        addMultiTabDesc2: '跳转到多标签页页面(带有查询参数)',
-        addTab: '添加标签页',
-        addTabDesc: '跳转到关于页面',
-        closeAboutTab: '关闭"关于"标签页',
-        closeCurrentTab: '关闭当前标签页',
-        closeTab: '关闭标签页',
-        title: '标签页操作'
-      },
-      tabTitle: {
-        change: '修改',
-        changeTitle: '修改标题',
-        reset: '重置',
-        resetTitle: '重置标题',
-        title: '标签页标题'
-      }
-    },
     toggleAuth: {
       adminOrUserVisible: '管理员和用户可见',
       adminVisible: '管理员可见',
@@ -51,56 +18,16 @@ const page: App.I18n.Schema['translation']['page'] = {
       toggleAccount: '切换账号'
     }
   },
-  home: {
-    creativity: '创意',
-    dealCount: '成交量',
-    downloadCount: '下载量',
-    entertainment: '娱乐',
-    greeting: '早安，{{userName}}, 今天又是充满活力的一天!',
-    message: '消息',
-    projectCount: '项目数',
-    projectNews: {
-      desc1: 'Soybean 在2021年5月28日创建了开源项目 soybean-admin!',
-      desc2: 'Yanbowe 向 soybean-admin 提交了一个bug，多标签栏不会自适应。',
-      desc3: 'Soybean 准备为 soybean-admin 的发布做充分的准备工作!',
-      desc4: 'Soybean 正在忙于为soybean-admin写项目说明文档！',
-      desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！',
-      moreNews: '更多动态',
-      title: '项目动态'
-    },
-    registerCount: '注册量',
-    rest: '休息',
-    schedule: '作息安排',
-    study: '学习',
-    todo: '待办',
-    turnover: '成交额',
-    visitCount: '访问量',
-    weatherDesc: '今日多云转晴，20℃ - 25℃!',
-    work: '工作'
-  },
   login: {
-    bindWeChat: {
-      title: '绑定微信'
-    },
-    codeLogin: {
-      getCode: '获取验证码',
-      imageCodePlaceholder: '请输入图片验证码',
-      reGetCode: '{{time}}秒后重新获取',
-      sendCodeSuccess: '验证码发送成功',
-      title: '验证码登录'
-    },
     common: {
       back: '返回',
       codeLogin: '验证码登录',
       codePlaceholder: '请输入验证码',
       confirm: '确定',
       confirmPasswordPlaceholder: '请再次输入密码',
-      loginOrRegister: '登录 / 注册',
+      login: '登录',
       loginSuccess: '登录成功',
       passwordPlaceholder: '请输入密码',
-      phonePlaceholder: '请输入手机号',
-      userNamePlaceholder: '请输入用户名',
-      validateSuccess: '验证成功',
       welcomeBack: '欢迎回来，{{userName}} ！'
     },
     pwdLogin: {
@@ -113,12 +40,6 @@ const page: App.I18n.Schema['translation']['page'] = {
       superAdmin: '超级管理员',
       title: '密码登录',
       user: '普通用户'
-    },
-    register: {
-      agreement: '我已经仔细阅读并接受',
-      policy: '《隐私权政策》',
-      protocol: '《用户协议》',
-      title: '注册账号'
     },
     resetPwd: {
       title: '重置密码'
@@ -223,34 +144,16 @@ const page: App.I18n.Schema['translation']['page'] = {
       editUser: '编辑用户',
       form: {
         nickName: '请输入昵称',
-        userEmail: '请输入邮箱',
-        userGender: '请选择性别',
         userName: '请输入用户名',
-        userPhone: '请输入手机号',
         userRole: '请选择用户角色',
         userStatus: '请选择用户状态'
       },
-      gender: {
-        female: '女',
-        male: '男'
-      },
       nickName: '昵称',
       title: '用户列表',
-      userEmail: '邮箱',
-      userGender: '性别',
       userName: '用户名',
-      userPhone: '手机号',
       userRole: '用户角色',
       userStatus: '用户状态'
     },
-    userDetail: {
-      content: `loader 会让网络请求跟懒加载的文件几乎一起发出请求 然后 一边解析懒加载的文件 一边去等待 网络请求
-        待到网络请求完成页面 一起显示 配合react的fiber架构 可以做到 用户如果嫌弃等待时间较长 在等待期间用户可以去
-        切换不同的页面 这是react 框架和react-router数据路由器的优势 而不用非得等到 页面的显现 而不是常规的
-        请求懒加载的文件 - 解析 - 请求懒加载的文件 - 挂载之后去发出网络请求 - 然后渲染页面 - 渲染完成
-        还要自己加loading效果`,
-      explain: '这个页面仅仅是为了展示 react-router-dom 的 loader 的强大能力，数据是随机的对不上很正常'
-    }
   }
 };
 

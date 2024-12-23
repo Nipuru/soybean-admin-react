@@ -19,53 +19,17 @@ declare module "@elegant-router/types" {
   export type RouteMap = {
     "root": "/";
     "not-found": "*";
-    "exception": "/exception";
-    "exception_403": "403";
-    "exception_404": "404";
-    "exception_500": "500";
-    "document": "/document";
-    "document_project": "project";
-    "document_project-link": "project-link";
-    "document_react": "react";
-    "document_vite": "vite";
-    "document_unocss": "unocss";
-    "document_procomponents": "procomponents";
-    "document_antd": "antd";
     "logout": "/logout";
     "403": "/403";
     "404": "/404";
     "500": "/500";
-    "about": "/about";
-    "function": "/function";
-    "function_event-bus": "event-bus";
-    "function_hide-child": "hide-child";
-    "function_hide-child_one": "one";
-    "function_hide-child_three": "three";
-    "function_hide-child_two": "two";
-    "function_multi-tab": "multi-tab";
-    "function_request": "request";
-    "function_super-page": "super-page";
-    "function_tab": "tab";
-    "function_toggle-auth": "toggle-auth";
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "login": "/login";
-    "login_code-login": "code-login";
-    "login_pwd-login": "pwd-login";
-    "login_register": "register";
-    "login_reset-pwd": "reset-pwd";
     "manage": "/manage";
     "manage_menu": "menu";
     "manage_role": "role";
     "manage_user": "user";
-    "manage_user-detail": "user-detail/:id";
-    "multi-menu": "/multi-menu";
-    "multi-menu_first": "first";
-    "multi-menu_first_child": "child";
-    "multi-menu_second": "second";
-    "multi-menu_second_child": "child";
-    "multi-menu_second_child_home": "home";
-    "user-center": "/user-center";
   };
 
   /**
@@ -85,18 +49,6 @@ declare module "@elegant-router/types" {
     RouteKey,
     | "root"
     | "not-found"
-    | "exception"
-    | "exception_403"
-    | "exception_404"
-    | "exception_500"
-    | "document"
-    | "document_project"
-    | "document_project-link"
-    | "document_react"
-    | "document_vite"
-    | "document_unocss"
-    | "document_procomponents"
-    | "document_antd"
     | "logout"
   >;
 
@@ -113,14 +65,10 @@ declare module "@elegant-router/types" {
     | "403"
     | "404"
     | "500"
-    | "about"
-    | "function"
     | "home"
     | "iframe-page"
     | "login"
     | "manage"
-    | "multi-menu"
-    | "user-center"
   >;
 
   /**
@@ -130,8 +78,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "exception"
-    | "document"
     | "logout"
   >;
 
@@ -144,29 +90,11 @@ declare module "@elegant-router/types" {
     | "404"
     | "500"
     | "iframe-page"
-    | "about"
-    | "function_event-bus"
-    | "function_hide-child_one"
-    | "function_hide-child_three"
-    | "function_hide-child_two"
-    | "function_multi-tab"
-    | "function_request"
-    | "function_super-page"
-    | "function_tab"
-    | "function_toggle-auth"
     | "home"
-    | "login_code-login"
     | "login"
-    | "login_pwd-login"
-    | "login_register"
-    | "login_reset-pwd"
     | "manage_menu"
     | "manage_role"
-    | "manage_user-detail"
     | "manage_user"
-    | "multi-menu_first_child"
-    | "multi-menu_second_child_home"
-    | "user-center"
   >;
 
   /**
@@ -176,16 +104,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "exception_403"
-    | "exception_404"
-    | "exception_500"
-    | "document_project"
-    | "document_project-link"
-    | "document_react"
-    | "document_vite"
-    | "document_unocss"
-    | "document_procomponents"
-    | "document_antd"
     | "logout"
   >;
 

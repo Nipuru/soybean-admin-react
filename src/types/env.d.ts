@@ -26,12 +26,6 @@ declare namespace Env {
     readonly VITE_BASE_URL: string;
     readonly VITE_CONSTANT_ROUTE_MODE: 'dynamic' | 'static';
     /**
-     * Whether to enable the http proxy
-     *
-     * Only valid in the development environment
-     */
-    readonly VITE_HTTP_PROXY?: CommonType.YesOrNo;
-    /**
      * The prefix of the local icon
      *
      * This prefix is start with the icon prefix
@@ -53,12 +47,6 @@ declare namespace Env {
      * Iconify icon name
      */
     readonly VITE_MENU_ICON: string;
-    /**
-     * other backend service base url
-     *
-     * the value is a json
-     */
-    readonly VITE_OTHER_SERVICE_BASE_URL: string;
     /**
      * The home route key
      *

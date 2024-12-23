@@ -2,7 +2,7 @@ import { useRequest } from '@sa/hooks';
 import { Button, Drawer, Flex, Form, Input, Radio, Select } from 'antd';
 import type { FC } from 'react';
 
-import { enableStatusOptions, userGenderOptions } from '@/constants/business';
+import { enableStatusOptions } from '@/constants/business';
 import { fetchGetAllRoles } from '@/service/api';
 
 interface OptionsProps {
@@ -12,7 +12,7 @@ interface OptionsProps {
 
 type Model = Pick<
   Api.SystemManage.User,
-  'nickName' | 'status' | 'userEmail' | 'userGender' | 'userName' | 'userPhone' | 'userRoles'
+  'nickName' | 'status' | 'userName' | 'userRoles'
 >;
 
 type RuleKey = Extract<keyof Model, 'status' | 'userName'>;
@@ -76,40 +76,10 @@ const UserOperateDrawer: FC<Page.OperateDrawerProps> = ({ form, handleSubmit, on
         </Form.Item>
 
         <Form.Item
-          label={t('page.manage.user.userGender')}
-          name="userGender"
-        >
-          <Radio.Group>
-            {userGenderOptions.map(item => (
-              <Radio
-                key={item.value}
-                value={item.value}
-              >
-                {t(item.label)}
-              </Radio>
-            ))}
-          </Radio.Group>
-        </Form.Item>
-
-        <Form.Item
           label={t('page.manage.user.nickName')}
           name="nickName"
         >
           <Input placeholder={t('page.manage.user.form.nickName')} />
-        </Form.Item>
-
-        <Form.Item
-          label={t('page.manage.user.userPhone')}
-          name="userPhone"
-        >
-          <Input placeholder={t('page.manage.user.form.userPhone')} />
-        </Form.Item>
-
-        <Form.Item
-          label={t('page.manage.user.userEmail')}
-          name="email"
-        >
-          <Input placeholder={t('page.manage.user.form.userEmail')} />
         </Form.Item>
 
         <Form.Item

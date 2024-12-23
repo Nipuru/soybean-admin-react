@@ -1,18 +1,13 @@
 import { Suspense, lazy } from 'react';
 
 import TableHeaderOperation from '@/components/advanced/TableHeaderOperation';
-import { enableStatusRecord, userGenderRecord } from '@/constants/business';
+import { enableStatusRecord } from '@/constants/business';
 import { ATG_MAP } from '@/constants/common';
 import { fetchGetUserList } from '@/service/api';
 
 import UserSearch from './modules/UserSearch';
 
 const UserOperateDrawer = lazy(() => import('./modules/UserOperateDrawer'));
-
-const tagUserGenderMap: Record<Api.SystemManage.UserGender, string> = {
-  1: 'processing',
-  2: 'error'
-};
 
 export function Component() {
   const { t } = useTranslation();
@@ -30,13 +25,8 @@ export function Component() {
         current: 1,
         nickName: null,
         size: 10,
-        // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
-        // the value can not be undefined, otherwise the property in Form will not be reactive
         status: null,
-        userEmail: null,
-        userGender: null,
         userName: null,
-        userPhone: null
       },
       columns: () => [
         {
@@ -55,40 +45,10 @@ export function Component() {
         },
         {
           align: 'center',
-          dataIndex: 'userGender',
-          key: 'userGender',
-          render: (_, record) => {
-            if (record?.userGender === null) {
-              return null;
-            }
-
-            const label = t(userGenderRecord[record.userGender]);
-
-            return <ATag color={tagUserGenderMap[record.userGender]}>{label}</ATag>;
-          },
-          title: t('page.manage.user.userGender'),
-          width: 100
-        },
-        {
-          align: 'center',
           dataIndex: 'nickName',
           key: 'nickName',
           minWidth: 100,
           title: t('page.manage.user.nickName')
-        },
-        {
-          align: 'center',
-          dataIndex: 'userPhone',
-          key: 'userPhone',
-          title: t('page.manage.user.userPhone'),
-          width: 120
-        },
-        {
-          align: 'center',
-          dataIndex: 'userEmail',
-          key: 'userEmail',
-          minWidth: 200,
-          title: t('page.manage.user.userEmail')
         },
         {
           align: 'center',
@@ -116,12 +76,6 @@ export function Component() {
                 onClick={() => edit(record.id)}
               >
                 {t('common.edit')}
-              </AButton>
-              <AButton
-                size="small"
-                onClick={() => nav(`/manage/user-detail/${record.id}`)}
-              >
-                详情
               </AButton>
               <APopconfirm
                 title={t('common.confirmDelete')}

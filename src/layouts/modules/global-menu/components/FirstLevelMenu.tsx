@@ -4,9 +4,8 @@ import { SimpleScrollbar } from '@sa/materials';
 import ClassNames from 'classnames';
 import { cloneElement } from 'react';
 
-import { ThemeContext } from '@/features';
 import { getSiderCollapse } from '@/store/slice/app';
-import { getThemeSettings } from '@/store/slice/theme';
+import { getDarkMode, getThemeSettings } from '@/store/slice/theme';
 
 interface Props {
   children?: React.ReactNode;
@@ -47,7 +46,7 @@ function MixMenuItem(Props: MixMenuItemProps) {
     }
   }
 
-  const { darkMode } = useContext(ThemeContext);
+  const darkMode = useAppSelector(getDarkMode);
 
   const siderCollapse = useAppSelector(getSiderCollapse);
 

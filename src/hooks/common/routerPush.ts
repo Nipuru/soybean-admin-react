@@ -74,8 +74,7 @@ export function useRouterPush() {
    * @param loginModule The login module
    * @param redirectUrl The redirect url, if not specified, it will be the current route fullPath
    */
-  async function toLogin(loginModule?: UnionKey.LoginModule, redirectUrl?: string) {
-    const module = loginModule || 'pwd-login';
+  async function toLogin(redirectUrl?: string) {
 
     const options: RouterPushOptions = {};
 
@@ -85,7 +84,7 @@ export function useRouterPush() {
       redirect
     };
 
-    return routerPushByKey(`login_${module}`, options);
+    return routerPushByKey(`login`, options);
   }
 
   /**
@@ -93,10 +92,10 @@ export function useRouterPush() {
    *
    * @param module
    */
-  async function toggleLoginModule(module: UnionKey.LoginModule) {
+  async function toggleLoginModule() {
     const query = route.query as Record<string, string>;
 
-    return routerPushByKey(`login_${module}`, { query });
+    return routerPushByKey(`login`, { query });
   }
 
   /**

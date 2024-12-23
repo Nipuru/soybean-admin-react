@@ -1,21 +1,48 @@
-import { Switch } from 'antd';
+import { Segmented, Switch } from 'antd';
+import type { SegmentedOptions } from 'antd/es/segmented';
 
-import { ThemeSchemaSegmented } from '@/features';
+import { themeSchemaRecord } from '@/constants/app';
 import {
   getThemeSettings,
   setColourWeakness,
   setGrayscale,
-  setIsOnlyExpandCurrentParentMenu
+  setIsOnlyExpandCurrentParentMenu,
+  setThemeScheme
 } from '@/store/slice/theme';
 
 import SettingItem from '../components/SettingItem';
 import '@/styles/css/darkMode.css';
+
+const icons: Record<UnionKey.ThemeScheme, string> = {
+  auto: 'material-symbols:hdr-auto',
+  dark: 'material-symbols:nightlight-rounded',
+  light: 'material-symbols:sunny'
+};
+
+const OPTIONS: SegmentedOptions = Object.keys(themeSchemaRecord).map(item => {
+  const key = item as UnionKey.ThemeScheme;
+  return {
+    label: (
+      <div className="w-[70px] flex justify-center">
+        <SvgIcon
+          className="h-28px text-icon-small"
+          icon={icons[key]}
+        />
+      </div>
+    ),
+    value: item
+  };
+});
 
 const DarkMode = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const themeSettings = useAppSelector(getThemeSettings);
+
+  function handleSegmentChange(value: string | number) {
+    dispatch(setThemeScheme(value as UnionKey.ThemeScheme));
+  }
 
   function handleGrayscaleChange(value: boolean) {
     dispatch(setGrayscale(value));
@@ -31,7 +58,12 @@ const DarkMode = () => {
   return (
     <div className="flex-col-stretch gap-16px">
       <div className="i-flex-center">
-        <ThemeSchemaSegmented />
+        <Segmented
+          className="bg-layout"
+          options={OPTIONS}
+          value={themeSettings.themeScheme}
+          onChange={handleSegmentChange}
+        />
       </div>
 
       <SettingItem

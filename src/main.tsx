@@ -10,7 +10,7 @@ import FallbackRender from '../ErrorBoundary.tsx';
 import App from './App.tsx';
 import './plugins/assets';
 import { setupI18n } from './locales';
-import { setupAppVersionNotification, setupDayjs, setupIconifyOffline, setupLoading, setupNProgress } from './plugins';
+import { setupDayjs, setupIconifyOffline, setupLoading, setupNProgress } from './plugins';
 
 function setupApp() {
   setupI18n();
@@ -25,14 +25,10 @@ function setupApp() {
 
   setupDayjs();
 
-  setupAppVersionNotification();
-
   const container = document.getElementById('root');
   if (!container) return;
   const root = createRoot(container);
   root.render(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     <ErrorBoundary fallbackRender={FallbackRender}>
       <Provider store={store}>
         <App />

@@ -28,32 +28,13 @@ const UserAvatar = memo(() => {
   }
 
   function onClick({ key }: { key: string }) {
-    if (key === '1') {
-      logout();
-    } else {
-      router.routerPushByKey('user-center');
-    }
+    logout()
   }
-  function loginOrRegister() {
+  function login() {
     router.routerPushByKey('login');
   }
 
   const items: MenuProps['items'] = [
-    {
-      key: '0',
-      label: (
-        <div className="flex-center gap-8px">
-          <SvgIcon
-            className="text-icon"
-            icon="ph:user-circle"
-          />
-          {t('common.userCenter')}
-        </div>
-      )
-    },
-    {
-      type: 'divider'
-    },
     {
       key: '1',
       label: (
@@ -84,7 +65,7 @@ const UserAvatar = memo(() => {
       </div>
     </Dropdown>
   ) : (
-    <Button onClick={loginOrRegister}>{t('page.login.common.loginOrRegister')}</Button>
+    <Button onClick={login}>{t('page.login.common.login')}</Button>
   );
 });
 

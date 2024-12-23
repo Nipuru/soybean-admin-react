@@ -29,7 +29,6 @@ declare global {
   const APopover: typeof import('antd')['Popover']
   const ARadio: typeof import('antd')['Radio']
   const ARow: typeof import('antd')['Row']
-  const ASegmented: typeof import('antd')['Segmented']
   const ASelect: typeof import('antd')['Select']
   const ASpace: typeof import('antd')['Space']
   const AStatistic: typeof import('antd')['Statistic']
@@ -38,7 +37,6 @@ declare global {
   const ATag: typeof import('antd')['Tag']
   const ATooltip: typeof import('antd')['Tooltip']
   const ATree: typeof import('antd')['Tree']
-  const ATypography: typeof import('antd')['Typography']
   const AWatermark: typeof import('antd')['Watermark']
   const AppProvider: typeof import('../components/stateful/AppProvider')['default']
   const BetterScroll: typeof import('../components/stateless/custom/BetterScroll')['default']
@@ -50,9 +48,7 @@ declare global {
   const FullScreen: typeof import('../components/stateless/common/FullScreen')['default']
   const GlobalLoading: typeof import('../components/stateless/common/GlobalLoading')['default']
   const IconAntDesignEnterOutlined: typeof import('~icons/ant-design/enter-outlined.tsx')['default']
-  const IconAntDesignInboxOutlined: typeof import('~icons/ant-design/inbox-outlined.tsx')['default']
   const IconAntDesignReloadOutlined: typeof import('~icons/ant-design/reload-outlined.tsx')['default']
-  const IconAntDesignSendOutlined: typeof import('~icons/ant-design/send-outlined.tsx')['default']
   const IconAntDesignSettingOutlined: typeof import('~icons/ant-design/setting-outlined.tsx')['default']
   const IconCarbonAdd: typeof import('~icons/carbon/add.tsx')['default']
   const IconGridiconsFullscreen: typeof import('~icons/gridicons/fullscreen.tsx')['default']
@@ -89,6 +85,7 @@ declare global {
   const SystemLogo: typeof import('../components/stateless/common/SystemLogo')['default']
   const TableColumnSetting: typeof import('../components/advanced/TableColumnSetting')['default']
   const TableHeaderOperation: typeof import('../components/advanced/TableHeaderOperation')['default']
+  const ThemeSchemaSwitch: typeof import('../components/stateful/ThemeSchemaSwitch')['default']
   const WaveBg: typeof import('../components/stateless/custom/WaveBg')['default']
   const createRef: typeof import('react')['createRef']
   const forwardRef: typeof import('react')['forwardRef']
@@ -102,7 +99,6 @@ declare global {
   const useAuth: typeof import('../hooks/business/auth')['useAuth']
   const useBoolean: typeof import('ahooks')['useBoolean']
   const useCallback: typeof import('react')['useCallback']
-  const useCaptcha: typeof import('../hooks/business/captcha')['useCaptcha']
   const useClickAway: typeof import('ahooks')['useClickAway']
   const useContext: typeof import('react')['useContext']
   const useControllableValue: typeof import('ahooks')['useControllableValue']
@@ -199,7 +195,6 @@ declare global {
   const useTableOperate: typeof import('../hooks/common/table')['useTableOperate']
   const useTableScroll: typeof import('../hooks/common/table')['useTableScroll']
   const useTextSelection: typeof import('ahooks')['useTextSelection']
-  const useTheme: typeof import('ahooks')['useTheme']
   const useThrottle: typeof import('ahooks')['useThrottle']
   const useThrottleEffect: typeof import('ahooks')['useThrottleEffect']
   const useThrottleFn: typeof import('ahooks')['useThrottleFn']
@@ -223,10 +218,4 @@ declare global {
   // @ts-ignore
   export type { FC } from 'react'
   import('react')
-  // @ts-ignore
-  export type { ThemeName } from '../hooks/business/usePreferredColorScheme'
-  import('../hooks/business/usePreferredColorScheme')
-  // @ts-ignore
-  export type { ECOption } from '../hooks/common/echarts'
-  import('../hooks/common/echarts')
 }

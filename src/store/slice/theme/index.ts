@@ -6,9 +6,10 @@ import { localStg } from '@/utils/storage';
 
 import type { AppThunk } from '../..';
 
-import { initThemeSettings, toggleAuxiliaryColorModes, toggleGrayscaleMode } from './shared';
+import { initThemeSettings, toggleAuxiliaryColorModes, toggleGrayscaleMode, updateDarkMode } from './shared';
 
 interface InitialStateType {
+  darkMode: boolean;
   settings: App.Theme.ThemeSetting;
 }
 
@@ -20,7 +21,10 @@ type DeepPartial<T> = {
       : DeepPartial<T[P]>;
 };
 
+const themeSchemes: UnionKey.ThemeScheme[] = ['light', 'dark', 'auto'];
+
 const initialState: InitialStateType = {
+  darkMode: false,
   settings: initThemeSettings()
 };
 
@@ -44,7 +48,9 @@ export const themeSlice = createSlice({
       toggleAuxiliaryColorModes(payload);
       state.settings.colourWeakness = payload;
     },
-
+    setDarkMode(state, { payload }: PayloadAction<boolean>) {
+      state.darkMode = payload;
+    },
     setFixedHeaderAndTab(state, { payload }: PayloadAction<boolean>) {
       state.settings.fixedHeaderAndTab = payload;
     },
@@ -90,7 +96,15 @@ export const themeSlice = createSlice({
     setTab(state, { payload }: PayloadAction<Partial<App.Theme.ThemeSetting['tab']>>) {
       Object.assign(state.settings.tab, payload);
     },
-
+    /**
+     * Set theme scheme
+     *
+     * @param themeScheme
+     */
+    setThemeScheme(state, { payload }: PayloadAction<UnionKey.ThemeScheme>) {
+      state.darkMode = updateDarkMode(payload);
+      state.settings.themeScheme = payload;
+    },
     setWatermark(state, { payload }: PayloadAction<Partial<App.Theme.ThemeSetting['watermark']>>) {
       Object.assign(state.settings.watermark, payload);
     },
@@ -120,16 +134,18 @@ export const themeSlice = createSlice({
     }
   },
   selectors: {
+    getDarkMode: theme => theme.darkMode,
     getThemeSettings: theme => theme.settings
   }
 });
 
-export const { getThemeSettings } = themeSlice.selectors;
+export const { getDarkMode, getThemeSettings } = themeSlice.selectors;
 
 export const {
   changeReverseHorizontalMix,
   resetTheme,
   setColourWeakness,
+  setDarkMode,
   setFixedHeaderAndTab,
   setFooter,
   setGrayscale,
@@ -143,6 +159,7 @@ export const {
   setSider,
   setSiderInverted,
   setTab,
+  setThemeScheme,
   setWatermark,
   updateThemeColors
 } = themeSlice.actions;
@@ -169,3 +186,15 @@ export const cacheThemeSettings = (): AppThunk => (_, getState) => {
 export const settingsJson = createSelector([getThemeSettings], settings => {
   return JSON.stringify(settings);
 });
+
+export const toggleThemeScheme = (): AppThunk<boolean> => (dispatch, getState) => {
+  const themeSettings = getThemeSettings(getState());
+  const index = themeSchemes.findIndex(item => item === themeSettings.themeScheme);
+  const nextIndex = index === themeSchemes.length - 1 ? 0 : index + 1;
+  const nextThemeScheme = themeSchemes[nextIndex];
+  const darkMode = updateDarkMode(nextThemeScheme);
+  const themeScheme = nextThemeScheme;
+  dispatch(setDarkMode(darkMode));
+  dispatch(setThemeScheme(themeScheme));
+  return darkMode;
+};

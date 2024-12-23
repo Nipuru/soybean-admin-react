@@ -4,9 +4,8 @@ import { createPortal } from 'react-dom';
 import DarkModeContainer from '@/components/stateless/common/DarkModeContainer';
 import PinToggler from '@/components/stateless/common/PinToggler';
 import { GLOBAL_SIDER_MENU_ID } from '@/constants/app';
-import { ThemeContext } from '@/features';
 import { getMixSiderFixed, toggleMixSiderFixed } from '@/store/slice/app';
-import { getThemeSettings } from '@/store/slice/theme';
+import { getDarkMode, getThemeSettings } from '@/store/slice/theme';
 
 import GlobalLogo from '../../global-logo';
 import FirstLevelMenu from '../components/FirstLevelMenu';
@@ -19,7 +18,7 @@ const VerticalMix = memo(() => {
 
   const { childLevelMenus, setActiveFirstLevelMenuKey } = useMixMenuContext();
   const dispatch = useAppDispatch();
-  const { darkMode } = useContext(ThemeContext);
+  const darkMode = useAppSelector(getDarkMode);
   const themeSettings = useAppSelector(getThemeSettings);
   const mixSiderFixed = useAppSelector(getMixSiderFixed);
 
